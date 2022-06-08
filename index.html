@@ -7,14 +7,30 @@
     <meta name="viewport" content="width=device-width initial, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/49aa9e056c.js" crossorigin="anonymous"></script>
 
   </head>
   <body>
-    <div class="container" id='container'>
-      <span class='logo'>Counter</span>
-      <h1 class='heading'>Click or tap on buttons to change the value</h1>
-    </div>
+
+    <div class="container" id='container'></div>
+    <span class='logo'>JSCounter</span>
+    <h1 class='heading'>Click or tap on buttons to change the value</h1>
+
+
+    <ul class="action-container" id='actionButtons'>
+      <li><button class="action-button" id='save'>Save value</button></li>
+      <li><button class="action-button" id='view'>View list</button></li>
+      <li><button class="action-button" id='clear'>Clear list</button></li>
+    </ul>
+
+
+    <ul class="list-container" id="valueList" hidden='true'>
+      <li>Save values to view them here</li>
+    </ul>
+
+
+
+
 
     <script src="js\script.js"></script>
   </body>

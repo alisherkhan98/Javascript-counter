@@ -36,10 +36,10 @@ function substractOne() {
   value.textContent = counterValue;
 }
 
-container.onclick = function (event) {
+function counterClick(event) {
   let target = event.target;
   let closestButton = target.closest('button');
-  if(!container.contains(closestButton)) return;
+  if(!closestButton || !container.contains(closestButton)) return;
   event.preventDefault();
 
   switch (closestButton) {
@@ -53,9 +53,80 @@ container.onclick = function (event) {
 
   }
 
-  closestButton.style.transform = 'scale(.9)'
-  setTimeout(() => (
+  closestButton.style.transform = 'scale(.9)';
+  setTimeout(() => {
     closestButton.style.transform = 'scale(1)'
-  ), '200')
+  }, '200');
 
 }
+
+document.addEventListener('click', counterClick);
+
+
+//adding extra actions
+//creating Array of values
+let values = [];
+
+function addZero(i) {
+  if (i < 10) {i = "0" + i}
+  return i;
+}
+
+function closeList (event) {
+  if (!event.target.contains(valueList)) {
+    valueList.setAttribute('hidden','true');
+    document.removeEventListener('click', closeList);
+   }
+}
+
+function showCheck(elem) {
+  let coords = elem.getBoundingClientRect();
+  let check = document.createElement('span');
+  check.innerHTML = '<i class="fa-solid fa-circle-check fa-beat"></i>';
+  check.style.position = 'absolute';
+  check.style.top = coords.top + 'px';
+  check.style.left = coords.right + 10 + 'px';
+  document.body.append(check);
+  setTimeout(() => {
+    check.remove();
+  }, '1000');
+
+}
+function actionClick(event) {
+  let target = event.target;
+  let closestButton = target.closest('button');
+  if(!closestButton || !actionButtons.contains(closestButton)) return;
+  event.preventDefault();
+  switch (closestButton) {
+
+    case save:
+      if (values.length == 0 ) {
+        valueList.innerHTML = '';
+      }
+      values.push(counterValue);
+      if (values.length <= 10) {
+        let date = new Date;
+        let time = `${addZero(date.getHours())} : ${addZero(date.getMinutes())} : ${addZero(date.getSeconds())}`;
+        valueList.insertAdjacentHTML('beforeend', `<li class='list-row'><span>${time}</span><span>${counterValue}</span></li><hr>`);
+      } else {
+        alert('too many values!')
+      }
+      showCheck(closestButton);
+      break;
+
+    case view:
+      valueList.removeAttribute('hidden');
+      document.addEventListener('click', closeList);
+
+      break;
+
+    case clear:
+      values =[];
+      valueList.innerHTML = '<li>Save values to view them here</li>';
+      showCheck(closestButton);
+
+      break;
+
+  }
+}
+document.addEventListener('click', actionClick)

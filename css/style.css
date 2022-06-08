@@ -24,7 +24,8 @@ body {
 .logo {
   position: absolute;
   top: 25px;
-  left: 5%;
+  left:50%;
+  transform: translate(-50%, 0);
   font-size: 1rem;
   font-weight: bold;
 }
@@ -54,6 +55,7 @@ body {
 
 .btn:hover {
   box-shadow: 0 0 20px #d2a148;
+  cursor: pointer;
 }
 
 .value {
@@ -62,9 +64,60 @@ body {
   margin: 1.5rem;
 }
 
+.action-container {
+  position:absolute;
+  top:85%;
+  left:50%;
+  width: 80%;
+  max-width: 800px;
+  transform: translate(-50%, 0);
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+
+}
+
+.action-button {
+  background-color: inherit;
+  color: #d2a148;
+  border: none;
+}
+.action-button:hover {
+  text-shadow: 0 0 20px #d2a148;
+  cursor: pointer;
+}
+
+.list-container {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  background-color: inherit;
+  box-shadow: 2px 2px 20px #000;
+  list-style: none;
+  width: 60%;
+  max-width: 600px;
+  padding: 1rem 2rem;
+}
+
+.list-container li {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+}
+.list-container hr{
+  opacity: 0.2;
+}
+
+.list-container hr:last-of-type{
+  display: none;
+}
+
 @media only screen and (min-width: 600px) {
   .logo {
     font-size: 1.5rem;
+    left: 10%;
   }
 
   .heading {
