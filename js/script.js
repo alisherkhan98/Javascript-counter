@@ -28,14 +28,15 @@ let counterValue = 0;
 
 function addOne() {
   counterValue++;
-  value.textContent = counterValue;
 }
 
 function substractOne() {
   counterValue--;
-  value.textContent = counterValue;
 }
 
+function changeValue() {
+  value.textContent = counterValue;
+}
 
 function counterClick(event) {
   let target = event.target;
@@ -46,10 +47,12 @@ function counterClick(event) {
   switch (closestButton) {
     case minusButton:
       substractOne();
+      changeValue();
       break;
 
     case plusButton:
       addOne();
+      changeValue();
       break;
 
   }
@@ -89,8 +92,8 @@ function showCheck(elem) {
   let check = document.createElement('span');
   check.innerHTML = '<i class="fa-solid fa-circle-check fa-beat"></i>';
   check.style.position = 'absolute';
-  check.style.top = coords.top - 2 + 'px';
-  check.style.left = coords.right + 10 + 'px';
+  check.style.top = coords.top - 2 + window.pageYOffset + 'px';
+  check.style.left = coords.right + window.pageXOffset + 7 + 'px';
   document.body.append(check);
   setTimeout(() => {
     check.remove();
