@@ -93,7 +93,7 @@ body {
   left:50%;
   transform: translate(-50%, -50%);
   background-color: inherit;
-  box-shadow: 2px 2px 20px #000;
+  box-shadow: 0 0 20px #000;
   list-style: none;
   width: 60%;
   max-width: 600px;
