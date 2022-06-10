@@ -28,10 +28,12 @@ let counterValue = 0;
 
 function addOne() {
   counterValue++;
+  changeValue();
 }
 
 function substractOne() {
   counterValue--;
+  changeValue();
 }
 
 function changeValue() {
@@ -47,12 +49,10 @@ function counterClick(event) {
   switch (closestButton) {
     case minusButton:
       substractOne();
-      changeValue();
       break;
 
     case plusButton:
       addOne();
-      changeValue();
       break;
 
   }
@@ -66,6 +66,19 @@ function counterClick(event) {
 
 document.addEventListener('click', counterClick);
 
+// function to change value with arrow keys
+function arrowKeyDown(event) {
+  switch (event.code) {
+    case 'ArrowUp':
+      addOne();
+      break;
+    case 'ArrowDown':
+      substractOne();
+      break;
+  }
+}
+
+document.addEventListener('keydown', arrowKeyDown)
 
 //adding extra actions
 //creating Array of values
